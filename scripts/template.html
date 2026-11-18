@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ignite 2026, sorted for you · ignite-2026-gold</title>
+<meta name="description" content="One prompt and one file that let your own Microsoft 365 Copilot pick the Ignite 2026 announcements that matter for your role and your company. English or Swedish. A personal project by Johan Wallquist.">
+<meta name="theme-color" content="#0B0A3A">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Which Ignite news is yours?">
+<meta property="og:description" content="One prompt, one file, about five minutes. Your own Copilot picks the Ignite 2026 announcements that matter for your role and your company.">
+<meta property="og:url" content="https://jw-sthlm.github.io/ignite-2026-gold/">
+<meta property="og:image" content="https://jw-sthlm.github.io/ignite-2026-gold/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B0A3A'/%3E%3Cpath d='M16 -4V28a24 24 0 0 0 24 24H70' fill='none' stroke='%23FCB946' stroke-width='7' stroke-linecap='round'/%3E%3Cpath d='M30 -4V28a10 10 0 0 0 10 10H70' fill='none' stroke='%2361F6E3' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/MonaSans-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/MonaSans-400.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Mona Sans"; src: url("assets/fonts/MonaSans-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Mona Sans"; src: url("assets/fonts/MonaSans-600.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Mona Sans"; src: url("assets/fonts/MonaSans-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Cascadia Mono"; src: url("assets/fonts/CascadiaMono-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Cascadia Mono"; src: url("assets/fonts/CascadiaMono-600.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+
+:root {
+  /* Ignite 2026 indigo ground */
+  --bg: oklch(0.189 0.089 274.7);
+  --deep: oklch(0.144 0.053 279.8);
+  --panel: oklch(0.129 0.049 279.9);
+  --raise: oklch(0.248 0.123 274);
+  --line: oklch(0.342 0.143 276.7);
+  --grid: oklch(0.302 0.155 272.1 / 0.32);
+  --ink: oklch(0.951 0.019 289.3);
+  --ink-soft: oklch(0.809 0.063 286.9);
+  --ink-faint: oklch(0.731 0.082 285.8);
+  /* Ignite 2026 neon lanes, one per news group */
+  --gold: oklch(0.829 0.148 77.2);
+  --green: oklch(0.737 0.146 157.4);
+  --teal: oklch(0.888 0.13 183.5);
+  --sky: oklch(0.783 0.103 243.1);
+  --orange: oklch(0.758 0.151 54.2);
+  --pink: oklch(0.717 0.213 339.4);
+  --sans: "Mona Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "Cascadia Mono", "Cascadia Code", Consolas, ui-monospace, monospace;
+  --pad: clamp(20px, 5vw, 56px);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --z-raised: 1;
+  --z-sticky: 10;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(1100px 700px at 88% -8%, oklch(0.32 0.19 284 / 0.55), transparent 62%),
+    radial-gradient(900px 600px at -10% 105%, oklch(0.28 0.16 300 / 0.35), transparent 60%),
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: auto, auto, 96px 96px, 96px 96px;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+code { font-family: var(--mono); font-size: 0.9em; }
+pre code { font: inherit; }
+.text-link { display: inline-flex; align-items: center; min-height: 48px; color: var(--ink-soft); font-weight: 600; }
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 6px; }
+h1, h2, h3, h4 { text-wrap: balance; margin: 0; }
+p { text-wrap: pretty; }
+.wrap { width: 100%; max-width: 1180px; margin-inline: auto; padding-inline: var(--pad); position: relative; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.skip { position: absolute; left: 16px; top: -60px; z-index: var(--z-sticky); background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 999px; font-weight: 600; text-decoration: none; }
+.skip:focus { top: 16px; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 48px; padding: 0 24px; border-radius: 999px;
+  font: 600 1rem/1 var(--sans); text-decoration: none; cursor: pointer;
+  color: var(--bg); background: var(--gold); border: 1px solid var(--gold);
+  box-shadow: 0 0 26px -6px oklch(0.829 0.148 77.2 / 0.75);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease);
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 0 34px -4px oklch(0.829 0.148 77.2 / 0.95); }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); box-shadow: none; }
+.btn.ghost:hover { border-color: var(--ink-faint); }
+.btn.is-done { background: var(--green); border-color: var(--green); box-shadow: 0 0 26px -6px oklch(0.737 0.146 157.4 / 0.8); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; padding-block: clamp(48px, 8vw, 112px) clamp(56px, 8vw, 104px); }
+.hero-art { position: absolute; top: clamp(-90px, -6vw, -30px); right: -150px; width: min(780px, 64vw); pointer-events: none; }
+.hero-art svg { display: block; width: 100%; height: auto; overflow: visible; }
+.hero-copy { position: relative; z-index: var(--z-raised); max-width: min(37rem, 60%); }
+.kicker { display: inline-flex; align-items: center; gap: 10px; font: 400 0.875rem/1.4 var(--mono); color: var(--ink-soft); }
+.kicker b { font-weight: 600; color: var(--teal); }
+.kicker .spark { width: 9px; height: 9px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 12px var(--teal); }
+.hero h1 { margin-top: 22px; font-size: clamp(2.6rem, 1.5rem + 4.6vw, 5.2rem); line-height: 0.98; font-weight: 700; letter-spacing: -0.035em; }
+.hero h1 .hl { color: var(--gold); }
+.hero .lead { margin: 24px 0 0; font-size: clamp(1.125rem, 1rem + 0.45vw, 1.35rem); line-height: 1.55; color: var(--ink-soft); max-width: 34rem; }
+.meta-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 0; padding: 0; list-style: none; }
+.meta-row li { font: 400 0.8125rem/1 var(--mono); color: var(--ink-soft); padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; background: oklch(0.144 0.053 279.8 / 0.6); }
+.byline { margin: 26px 0 0; font-size: 0.9375rem; color: var(--ink-faint); }
+
+.lane { fill: none; stroke-linecap: round; }
+.lane-base { stroke-width: 9; }
+.lane-glow { stroke-width: 9; opacity: 0.6; filter: url(#lane-blur); }
+.lane-thin { stroke-width: 1.5; opacity: 0.75; }
+.lane-spark { stroke: oklch(0.99 0.01 280); stroke-width: 4; stroke-dasharray: 34 1000; stroke-dashoffset: 34; opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .lane-glow { animation: glow-in 1.6s var(--ease) both; }
+  .lane-glow:nth-of-type(2) { animation-delay: 0.08s; }
+  .lane-spark { animation: run var(--dur, 9s) cubic-bezier(0.45, 0.05, 0.55, 0.95) var(--delay, 1.2s) infinite; }
+}
+@keyframes glow-in { from { opacity: 0; } to { opacity: 0.6; } }
+@keyframes run {
+  0% { stroke-dashoffset: 34; opacity: 0; }
+  8% { opacity: 0.95; }
+  85% { opacity: 0.95; }
+  100% { stroke-dashoffset: -1000; opacity: 0; }
+}
+
+/* Sections */
+.section { padding-block: clamp(64px, 9vw, 128px); }
+.section-head h2 { font-size: clamp(2rem, 1.3rem + 2.6vw, 3.25rem); line-height: 1.04; font-weight: 700; letter-spacing: -0.025em; }
+.section-head p { margin: 16px 0 0; color: var(--ink-soft); max-width: 62ch; font-size: 1.125rem; }
+
+/* How it works */
+.how-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 34px; margin-top: clamp(32px, 4vw, 48px); }
+.step { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 0 18px; }
+.step-n { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; font: 600 1.125rem/1 var(--mono); color: var(--bg); background: var(--c, var(--gold)); box-shadow: 0 0 22px -4px var(--c, var(--gold)); }
+.step h3 { font-size: 1.375rem; line-height: 1.25; font-weight: 600; padding-top: 8px; }
+.step p { margin: 10px 0 0; color: var(--ink-soft); }
+.step .btn-row { margin-top: 18px; }
+.step .note { color: var(--ink); }
+.get { border: 1px solid var(--line); border-radius: 22px; padding: 26px 28px; background: oklch(0.144 0.053 279.8 / 0.55); }
+.get h3 { font-size: 1.25rem; font-weight: 600; }
+.get ul { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.get li { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 10px; color: var(--ink-soft); }
+.get li::before { content: ""; width: 10px; height: 10px; margin-top: 9px; border-radius: 3px; background: var(--teal); box-shadow: 0 0 10px var(--teal); }
+.get .after { margin: 16px 0 0; color: var(--ink-faint); font-size: 0.9375rem; }
+
+.panel { border: 1px solid var(--line); border-radius: 22px; overflow: hidden; background: var(--panel); box-shadow: 0 0 0 1px oklch(0.45 0.16 280 / 0.12), 0 40px 90px -40px oklch(0.05 0.05 280 / 0.95), 0 0 60px -30px oklch(0.888 0.13 183.5 / 0.35); scroll-margin-top: 24px; }
+.panel-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; padding: 10px 12px 10px 18px; background: var(--deep); border-bottom: 1px solid var(--line); }
+.panel-label { font: 400 0.8125rem/1 var(--mono); color: var(--ink-faint); display: inline-flex; align-items: center; gap: 8px; }
+.panel-label::before { content: ""; width: 8px; height: 14px; border-radius: 2px; background: var(--teal); box-shadow: 0 0 10px var(--teal); }
+.tabs { display: inline-flex; gap: 4px; padding: 3px; border: 1px solid var(--line); border-radius: 999px; margin-left: auto; }
+.tab { min-height: 36px; padding: 0 14px; border-radius: 999px; border: 0; background: transparent; color: var(--ink-soft); font: 600 0.875rem/1 var(--sans); cursor: pointer; }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--bg); }
+.panel-bar .btn { min-height: 40px; padding: 0 18px; font-size: 0.9375rem; }
+.panel pre { margin: 0; padding: 22px 24px 30px; max-height: min(70vh, 640px); overflow: auto; font: 400 0.84rem/1.65 var(--mono); color: var(--ink-soft); white-space: pre-wrap; overflow-wrap: anywhere; }
+.panel pre:focus-visible { outline-offset: -4px; }
+.p-title { color: var(--teal); font-weight: 600; }
+.p-head { color: var(--gold); font-weight: 600; }
+.panel-foot { padding: 12px 18px; border-top: 1px solid var(--line); font-size: 0.875rem; color: var(--ink-faint); background: var(--deep); }
+
+@media (min-width: 980px) {
+  .how-grid { grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr); gap: 36px 64px; align-items: start; }
+  .how-grid > .step-1 { grid-column: 1; grid-row: 1; }
+  .how-grid > .step-2 { grid-column: 1; grid-row: 2; }
+  .how-grid > .step-3 { grid-column: 1; grid-row: 3; }
+  .how-grid > .get { grid-column: 1; grid-row: 4; }
+  .how-grid > .panel { grid-column: 2; grid-row: 1 / span 4; position: sticky; top: 24px; }
+}
+
+/* Lens */
+.lens { position: relative; padding-block: clamp(72px, 10vw, 140px) clamp(110px, 13vw, 180px); }
+.lens blockquote { margin: 0; max-width: 19ch; font-size: clamp(2.1rem, 1.2rem + 3.8vw, 4.3rem); font-weight: 700; line-height: 1.03; letter-spacing: -0.03em; text-wrap: balance; }
+.lens blockquote .hl { color: var(--teal); text-shadow: 0 0 28px oklch(0.888 0.13 183.5 / 0.45); }
+.lens .attrib { margin: 20px 0 0; font: 400 0.875rem/1.4 var(--mono); color: var(--ink-faint); }
+.lens .attrib a { color: var(--ink-soft); }
+.lens-body { margin: 30px 0 0; max-width: 60ch; font-size: 1.1875rem; color: var(--ink-soft); }
+.lens-body strong { color: var(--ink); font-weight: 600; }
+.lens .btn-row { margin-top: 26px; }
+.lens-lane { position: absolute; left: 0; right: calc(max(var(--pad), (100vw - 1180px) / 2 + var(--pad)) + 8px); bottom: 0; height: 84px; border-top: 4px solid var(--teal); border-right: 4px solid var(--teal); border-top-right-radius: 72px; filter: drop-shadow(0 0 9px oklch(0.888 0.13 183.5 / 0.75)); pointer-events: none; }
+
+/* News */
+.toolbar { margin-top: 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.toolbar-label { font: 400 0.8125rem/1 var(--mono); color: var(--ink-faint); }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.filters button { min-height: 40px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--ink-soft); font: 600 0.9rem/1 var(--sans); cursor: pointer; transition: border-color 0.2s var(--ease), background 0.2s var(--ease); }
+.filters button:hover { border-color: var(--ink-faint); color: var(--ink); }
+.filters button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.count { font: 400 0.8125rem/1 var(--mono); color: var(--ink-faint); }
+.jump { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 22px; font-size: 0.9375rem; }
+.jump a { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-soft); text-decoration: none; padding: 6px 0; }
+.jump a:hover { color: var(--ink); text-decoration: underline; }
+.jump .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--c); box-shadow: 0 0 10px var(--c); }
+.legend { margin: 18px 0 0; font-size: 0.9375rem; color: var(--ink-faint); max-width: 75ch; }
+.legend .chip { margin-right: 4px; }
+
+.group { margin-top: clamp(56px, 7vw, 92px); scroll-margin-top: 24px; }
+.group-lane { display: block; width: 104px; height: 5px; border-radius: 999px; background: var(--c); box-shadow: 0 0 18px var(--c); margin-bottom: 20px; }
+.group-head h3 { display: flex; align-items: baseline; gap: 14px; font-size: clamp(1.45rem, 1.1rem + 1.2vw, 2rem); line-height: 1.15; font-weight: 700; letter-spacing: -0.015em; }
+.group-n { font: 600 0.72em/1 var(--mono); color: var(--c); }
+.group-intro { margin: 12px 0 0; color: var(--ink-soft); max-width: 64ch; }
+.items { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 430px), 1fr)); gap: 0 56px; margin-top: 26px; }
+.item { padding: 26px 0 30px; border-top: 1px solid var(--line); scroll-margin-top: 24px; }
+.item-top { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 14px; align-items: baseline; }
+.item-id { font: 600 0.8125rem/1 var(--mono); color: var(--c); }
+.item h4 { font-size: 1.1875rem; line-height: 1.3; font-weight: 600; }
+.chips { grid-column: 2; display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; padding: 0; list-style: none; }
+.chip { display: inline-block; font: 600 0.75rem/1 var(--mono); padding: 6px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink-soft); white-space: nowrap; }
+.chip-ga { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.chip-soon { border-style: dashed; border-color: var(--ink-faint); color: var(--ink); }
+.what { margin: 16px 0 0; }
+.why, .deeper { margin: 10px 0 0; color: var(--ink-soft); }
+.k { font: 600 0.78rem/1 var(--mono); color: var(--c); margin-right: 6px; }
+.meta { margin: 16px 0 0; display: grid; gap: 6px; font-size: 0.9375rem; color: var(--ink-faint); }
+.meta div { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 10px; }
+.meta dt { font: 400 0.78rem/1.9 var(--mono); }
+.meta dd { margin: 0; }
+.sources { margin: 14px 0 0; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.src { font: 600 0.8125rem/1.6 var(--mono); color: var(--c); }
+.what a, .why a, .meta a, .deeper a { color: var(--ink); }
+
+/* CTA */
+.cta { position: relative; }
+.cta-inner { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 28px; padding: clamp(32px, 5vw, 64px); background: oklch(0.144 0.053 279.8 / 0.7); }
+.cta-inner > :not(.cta-art) { position: relative; z-index: var(--z-raised); }
+.cta h2 { max-width: 18ch; font-size: clamp(2rem, 1.3rem + 2.6vw, 3.25rem); line-height: 1.04; font-weight: 700; letter-spacing: -0.025em; }
+.cta p { margin: 18px 0 0; max-width: 46ch; color: var(--ink-soft); font-size: 1.1875rem; }
+.cta-art { position: absolute; right: 0; bottom: 0; width: min(500px, 46%); height: auto; overflow: visible; pointer-events: none; }
+@media (max-width: 720px) { .cta-art { display: none; } }
+
+/* Footer */
+footer { padding-block: 40px 56px; border-top: 1px solid var(--line); color: var(--ink-faint); font-size: 0.9375rem; }
+footer p { margin: 0; max-width: 78ch; }
+footer nav { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px 22px; }
+footer nav a { color: var(--ink-soft); }
+
+@media (max-width: 860px) {
+  .hero { padding-top: 0; }
+  .hero-art { position: relative; top: auto; right: auto; width: auto; height: 230px; margin: 0 calc(-1 * var(--pad)); overflow: hidden; -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent); mask-image: linear-gradient(to bottom, #000 62%, transparent); }
+  .hero-art svg { position: absolute; width: 600px; right: -190px; top: -228px; }
+  .hero-copy { max-width: none; margin-top: 4px; }
+  .hero h1 { margin-top: 16px; }
+}
+@media (max-width: 520px) {
+  .btn-row .btn { width: 100%; }
+  .panel-bar { padding-left: 14px; }
+  .tabs { margin-left: 0; }
+  .panel-bar .copy-btn { width: 100%; }
+  .panel pre { padding: 18px 16px 24px; font-size: 0.8rem; max-height: 62vh; }
+  .meta div { grid-template-columns: 1fr; gap: 0; }
+  .lens-lane { height: 56px; border-top-right-radius: 48px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lane-spark { display: none; }
+  .btn, .filters button { transition: none; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#prompt">Skip to the prompt</a>
+<p id="live" class="sr-only" aria-live="polite"></p>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 640 560" focusable="false">
+        <defs>
+          <filter id="lane-blur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="7"/></filter>
+        </defs>
+        <circle cx="420" cy="250" r="318" fill="none" stroke="oklch(0.342 0.143 276.7)" stroke-width="1" opacity="0.55"/>
+        <path class="lane lane-thin" stroke="var(--gold)" d="M150 -20V250A270 270 0 0 0 420 520H700"/>
+        <g>
+          <path class="lane lane-glow" stroke="var(--gold)" d="M170 -20V250A250 250 0 0 0 420 500H700"/>
+          <path class="lane lane-glow" stroke="var(--green)" d="M196 -20V250A224 224 0 0 0 420 474H700"/>
+          <path class="lane lane-glow" stroke="var(--teal)" d="M222 -20V250A198 198 0 0 0 420 448H700"/>
+          <path class="lane lane-glow" stroke="var(--sky)" d="M248 -20V250A172 172 0 0 0 420 422H700"/>
+          <path class="lane lane-glow" stroke="var(--orange)" d="M274 -20V250A146 146 0 0 0 420 396H700"/>
+          <path class="lane lane-glow" stroke="var(--pink)" d="M300 -20V250A120 120 0 0 0 420 370H700"/>
+        </g>
+        <g>
+          <path class="lane lane-base" stroke="var(--gold)" d="M170 -20V250A250 250 0 0 0 420 500H700"/>
+          <path class="lane lane-base" stroke="var(--green)" d="M196 -20V250A224 224 0 0 0 420 474H700"/>
+          <path class="lane lane-base" stroke="var(--teal)" d="M222 -20V250A198 198 0 0 0 420 448H700"/>
+          <path class="lane lane-base" stroke="var(--sky)" d="M248 -20V250A172 172 0 0 0 420 422H700"/>
+          <path class="lane lane-base" stroke="var(--orange)" d="M274 -20V250A146 146 0 0 0 420 396H700"/>
+          <path class="lane lane-base" stroke="var(--pink)" d="M300 -20V250A120 120 0 0 0 420 370H700"/>
+        </g>
+        <g>
+          <path class="lane lane-spark" pathLength="1000" style="--dur: 9s; --delay: 1.1s" d="M170 -20V250A250 250 0 0 0 420 500H700"/>
+          <path class="lane lane-spark" pathLength="1000" style="--dur: 11s; --delay: 2.6s" d="M196 -20V250A224 224 0 0 0 420 474H700"/>
+          <path class="lane lane-spark" pathLength="1000" style="--dur: 8s; --delay: 1.7s" d="M222 -20V250A198 198 0 0 0 420 448H700"/>
+          <path class="lane lane-spark" pathLength="1000" style="--dur: 12.5s; --delay: 3.4s" d="M248 -20V250A172 172 0 0 0 420 422H700"/>
+          <path class="lane lane-spark" pathLength="1000" style="--dur: 10s; --delay: 4.2s" d="M274 -20V250A146 146 0 0 0 420 396H700"/>
+          <path class="lane lane-spark" pathLength="1000" style="--dur: 13.5s; --delay: 2.1s" d="M300 -20V250A120 120 0 0 0 420 370H700"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="hero-copy">
+      <p class="kicker"><span class="spark" aria-hidden="true"></span><span><b>ignite-2026-gold</b> · the customer playback</span></p>
+      <h1>Which Ignite news is <span class="hl">yours?</span></h1>
+      <p class="lead">Microsoft announced almost 60 things at Ignite 2026. One prompt and one file let your own Copilot pick the few that matter for your role and your company.</p>
+      <ul class="meta-row" aria-label="At a glance">
+        <li>1 prompt</li><li>1 file</li><li>English or Swedish</li><li>about 5 minutes</li>
+      </ul>
+      <div class="btn-row">
+        <button type="button" class="btn" data-copy><span class="label">Copy the prompt</span></button>
+        <a class="btn ghost" href="ignite-2026-digest.md" download>Download the file</a>
+      </div>
+      <p class="byline">By Johan Wallquist, Cloud &amp; AI Advisor at Microsoft. A personal project, updated 18&nbsp;November&nbsp;2026.</p>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section" id="how" aria-labelledby="how-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="how-title">Three steps, about five minutes</h2>
+        <p>Works in Microsoft 365 Copilot Chat and in Cowork. Your own Copilot does the sorting, so the answer fits your company instead of everyone's.</p>
+      </div>
+
+      <div class="how-grid">
+        <div class="step step-1" style="--c: var(--gold)">
+          <span class="step-n" aria-hidden="true">1</span>
+          <div>
+            <h3><span class="sr-only">Step 1: </span>Download the file</h3>
+            <p><code>ignite-2026-digest.md</code> lists {{ITEM_COUNT}} announcements in six groups. Each one has Microsoft's own status wording and a link to the source.</p>
+            <div class="btn-row">
+              <a class="btn" href="ignite-2026-digest.md" download>Download the file</a>
+              <a class="text-link" href="https://github.com/JW-Sthlm/ignite-2026-gold/blob/main/ignite-2026-digest.md">Read it on GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="step step-2" style="--c: var(--teal)">
+          <span class="step-n" aria-hidden="true">2</span>
+          <div>
+            <h3><span class="sr-only">Step 2: </span>Copy the prompt</h3>
+            <p>English or Swedish. Copilot answers in the language you pick. Read it first, it's short, and nothing in it is hidden.</p>
+          </div>
+        </div>
+
+        <div class="panel" id="prompt">
+          <div class="panel-bar">
+            <span class="panel-label">prompt</span>
+            <div class="tabs" role="tablist" aria-label="Prompt language">
+              <button type="button" class="tab" role="tab" id="tab-en" aria-controls="panel-en" aria-selected="true">English</button>
+              <button type="button" class="tab" role="tab" id="tab-sv" aria-controls="panel-sv" aria-selected="false" tabindex="-1">Svenska</button>
+            </div>
+            <button type="button" class="btn copy-btn" data-copy><span class="label">Copy prompt</span></button>
+          </div>
+          <div role="tabpanel" id="panel-en" aria-labelledby="tab-en">
+            <pre tabindex="0" lang="en"><code>{{PROMPT_EN}}</code></pre>
+          </div>
+          <div role="tabpanel" id="panel-sv" aria-labelledby="tab-sv" hidden>
+            <pre tabindex="0" lang="sv"><code>{{PROMPT_SV}}</code></pre>
+          </div>
+          <p class="panel-foot">Runs in your own Copilot. Nothing is sent to me.</p>
+        </div>
+
+        <div class="step step-3" style="--c: var(--pink)">
+          <span class="step-n" aria-hidden="true">3</span>
+          <div>
+            <h3><span class="sr-only">Step 3: </span>Paste both into Copilot</h3>
+            <p>Open Microsoft 365 Copilot Chat or Cowork, attach the file, paste the prompt and send it. With a Microsoft 365 Copilot license, Copilot can also read your recent mail, meetings and documents. Without one, fill in the four lines under ABOUT ME.</p>
+            <p class="note">Has your admin turned off web search in Copilot? The file is enough.</p>
+          </div>
+        </div>
+
+        <div class="get">
+          <h3>What you get back</h3>
+          <ul>
+            <li>What Copilot based the answer on, so you can correct it</li>
+            <li>Your top five, each with status, a first step and the source</li>
+            <li>Two things to try in Copilot this week</li>
+            <li>Your biggest opportunities, and which systems an agent would need to reach</li>
+            <li>What to leave for now</li>
+            <li>Three questions for your IT team, Microsoft or your partner</li>
+          </ul>
+          <p class="after">Then Copilot offers to turn it into a one-page brief for your leadership team.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lens" aria-label="Why the prompt asks about your systems">
+    <div class="wrap">
+      <blockquote>“Agents are only as useful as the <span class="hl">systems they can act on.</span>”</blockquote>
+      <p class="attrib">Microsoft's <a href="https://azure.microsoft.com/en-us/blog/microsoft-ignite-2026-whats-new-in-azure-the-platform-purpose-built-for-ai/">Azure blog for Ignite 2026</a></p>
+      <p class="lens-body">That line explains a lot of this year's news. In a Forrester survey quoted by Microsoft, <strong>91% of IT leaders</strong> said modernization is necessary for AI, but on average only <strong>32% of their applications</strong> were AI-ready. So the prompt asks Copilot a question most recaps skip: which of your systems would an agent need to reach, and are they ready?</p>
+      <div class="btn-row"><a class="btn ghost" href="#g3">See the modernization news</a></div>
+    </div>
+    <span class="lens-lane" aria-hidden="true"></span>
+  </section>
+
+  <section class="section" id="news" aria-labelledby="news-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="news-title">The {{ITEM_COUNT}}, sorted</h2>
+        <p>Six groups, from how people work down to the systems underneath. Statuses are copied the way Microsoft worded them on 18 November 2026. They change, so check the source before you decide anything.</p>
+      </div>
+      <nav class="jump" aria-label="Jump to a group">{{JUMP}}</nav>
+      <div class="toolbar">
+        <span class="toolbar-label" id="filter-label">Show what's for</span>
+        <div class="filters" role="group" aria-labelledby="filter-label">{{FILTERS}}</div>
+        <span class="count" id="count">Showing {{ITEM_COUNT}} of {{ITEM_COUNT}}</span>
+      </div>
+      <p class="legend"><span class="chip chip-ga">GA</span> means released. <span class="chip">Preview</span> means you can try it, but it may change. <span class="chip">Frontier</span> is Microsoft's early-access program for new Copilot features. A <span class="chip chip-soon">dashed</span> chip means announced with a date, but not here yet.</p>
+{{NEWS_GROUPS}}
+    </div>
+  </section>
+
+  <section class="section cta" aria-labelledby="cta-title">
+    <div class="wrap">
+      <div class="cta-inner">
+        <h2 id="cta-title">Want an Ignite debrief for your leadership team?</h2>
+        <p>I'll take your leaders through what's ready now and what it means for your systems. Send me a message on LinkedIn.</p>
+        <div class="btn-row"><a class="btn" href="https://www.linkedin.com/in/jwallquist/">Message me on LinkedIn</a></div>
+        <svg class="cta-art" viewBox="0 0 520 300" aria-hidden="true" focusable="false">
+          <path class="lane lane-glow" stroke="var(--orange)" d="M560 110H330A150 150 0 0 0 180 260V340"/>
+          <path class="lane lane-glow" stroke="var(--pink)" d="M560 140H330A120 120 0 0 0 210 260V340"/>
+          <path class="lane lane-thin" stroke="var(--orange)" d="M560 94H330A166 166 0 0 0 164 260V340"/>
+          <path class="lane lane-base" stroke="var(--orange)" d="M560 110H330A150 150 0 0 0 180 260V340"/>
+          <path class="lane lane-base" stroke="var(--pink)" d="M560 140H330A120 120 0 0 0 210 260V340"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>ignite-2026-gold is a personal project by Johan Wallquist, Cloud &amp; AI Advisor at Microsoft. It is not an official Microsoft site, and the views are my own. Statuses are as of 18 November 2026. There are no prices here on purpose.</p>
+    <nav aria-label="Footer">
+      <a href="https://news.microsoft.com/events/ignite/2026/book-of-news/">Microsoft Ignite 2026 Book of News</a>
+      <a href="https://github.com/JW-Sthlm/ignite-2026-gold">Source on GitHub</a>
+      <a href="https://github.com/JW-Sthlm/ignite-2026-gold/blob/main/LICENSE.md">License</a>
+      <a href="https://jw-sthlm.github.io/build-2026-gold/">The Build 2026 edition, for partners</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const $ = (s, el = document) => el.querySelector(s);
+  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const live = $('#live');
+
+  const tabs = $$('[role="tab"]');
+  const selectTab = (tab) => {
+    tabs.forEach((t) => {
+      const on = t === tab;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+  };
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => selectTab(tab));
+    tab.addEventListener('keydown', (e) => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      e.preventDefault();
+      const next = tabs[(i + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length];
+      selectTab(next);
+      next.focus();
+    });
+  });
+  if ((navigator.language || '').toLowerCase().startsWith('sv')) selectTab($('#tab-sv'));
+
+  const copyText = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch (_) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      let ok = false;
+      try { ok = document.execCommand('copy'); } catch (_) { ok = false; }
+      ta.remove();
+      return ok;
+    }
+  };
+  $$('[data-copy]').forEach((btn) => {
+    const label = $('.label', btn);
+    const original = label.textContent;
+    btn.addEventListener('click', async () => {
+      const code = $('[role="tabpanel"]:not([hidden]) code');
+      const lang = code.closest('pre').lang === 'sv' ? 'Swedish' : 'English';
+      const ok = await copyText(code.textContent);
+      label.textContent = ok ? 'Copied' : 'Select the text to copy';
+      btn.classList.toggle('is-done', ok);
+      live.textContent = ok ? `${lang} prompt copied. Paste it into Copilot with the file attached.` : 'Copy did not work. Select the prompt text and copy it manually.';
+      if (!ok) $('#prompt').scrollIntoView({ block: 'start' });
+      setTimeout(() => { label.textContent = original; btn.classList.remove('is-done'); }, 2400);
+    });
+  });
+
+  const items = $$('.item');
+  const groups = $$('.group');
+  const count = $('#count');
+  $$('[data-f]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      $$('[data-f]').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      const f = btn.dataset.f;
+      let shown = 0;
+      items.forEach((item) => {
+        const on = f === 'all' || item.dataset.aud.split(' ').includes(f);
+        item.hidden = !on;
+        if (on) shown += 1;
+      });
+      groups.forEach((g) => { g.hidden = !g.querySelector('.item:not([hidden])'); });
+      count.textContent = `Showing ${shown} of ${items.length}`;
+      live.textContent = count.textContent;
+    });
+  });
+})();
+</script>
+</body>
+</html>
