@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ignite 2026, sorted for you · ignite-2026-gold</title>
-<meta name="description" content="One prompt and one file that let your own Microsoft 365 Copilot pick the Ignite 2026 announcements that matter for your role and your company. English or Swedish. A personal project by Johan Wallquist.">
+<meta name="description" content="One prompt that lets your own Microsoft 365 Copilot read Microsoft's Ignite 2026 news and pick what matters for your role and your company. English or Swedish. A personal project by Johan Wallquist.">
 <meta name="theme-color" content="#0B0A3A">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Which Ignite news is yours?">
-<meta property="og:description" content="One prompt, one file, about five minutes. Your own Copilot picks the Ignite 2026 announcements that matter for your role and your company.">
+<meta property="og:description" content="One prompt, about five minutes. Your own Copilot reads Microsoft's Ignite 2026 news and picks what matters for your role and your company.">
 <meta property="og:url" content="https://jw-sthlm.github.io/ignite-2026-gold/">
 <meta property="og:image" content="https://jw-sthlm.github.io/ignite-2026-gold/assets/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -74,7 +74,6 @@ a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; 
 a:hover { text-decoration-thickness: 2px; }
 code { font-family: var(--mono); font-size: 0.9em; }
 pre code { font: inherit; }
-.text-link { display: inline-flex; align-items: center; min-height: 48px; color: var(--ink-soft); font-weight: 600; }
 :focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 6px; }
 h1, h2, h3, h4 { text-wrap: balance; margin: 0; }
 p { text-wrap: pretty; }
@@ -305,13 +304,13 @@ footer nav a { color: var(--ink-soft); }
     <div class="hero-copy">
       <p class="kicker"><span class="spark" aria-hidden="true"></span><span><b>ignite-2026-gold</b> · the customer playback</span></p>
       <h1>Which Ignite news is <span class="hl">yours?</span></h1>
-      <p class="lead">Microsoft announced almost 60 things at Ignite 2026. One prompt and one file let your own Copilot pick the few that matter for your role and your company.</p>
+      <p class="lead">Microsoft announced almost 60 things at Ignite 2026. One prompt lets your own Copilot read Microsoft's own sources and pick the few that matter for your role and your company.</p>
       <ul class="meta-row" aria-label="At a glance">
-        <li>1 prompt</li><li>1 file</li><li>English or Swedish</li><li>about 5 minutes</li>
+        <li>1 prompt</li><li>Microsoft sources only</li><li>English or Swedish</li>
       </ul>
       <div class="btn-row">
         <button type="button" class="btn" data-copy><span class="label">Copy the prompt</span></button>
-        <a class="btn ghost" href="ignite-2026-digest.md" download>Download the file</a>
+        <a class="btn ghost" href="#news">See the {{ITEM_COUNT}} announcements</a>
       </div>
       <p class="byline">By Johan Wallquist, Cloud &amp; AI Advisor at Microsoft. A personal project, updated 18&nbsp;November&nbsp;2026.</p>
     </div>
@@ -330,19 +329,7 @@ footer nav a { color: var(--ink-soft); }
         <div class="step step-1" style="--c: var(--gold)">
           <span class="step-n" aria-hidden="true">1</span>
           <div>
-            <h3><span class="sr-only">Step 1: </span>Download the file</h3>
-            <p><code>ignite-2026-digest.md</code> lists {{ITEM_COUNT}} announcements in six groups. Each one has Microsoft's own status wording and a link to the source.</p>
-            <div class="btn-row">
-              <a class="btn" href="ignite-2026-digest.md" download>Download the file</a>
-              <a class="text-link" href="https://github.com/JW-Sthlm/ignite-2026-gold/blob/main/ignite-2026-digest.md">Read it on GitHub</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="step step-2" style="--c: var(--teal)">
-          <span class="step-n" aria-hidden="true">2</span>
-          <div>
-            <h3><span class="sr-only">Step 2: </span>Copy the prompt</h3>
+            <h3><span class="sr-only">Step 1: </span>Copy the prompt</h3>
             <p>English or Swedish. Copilot answers in the language you pick. Read it first, it's short, and nothing in it is hidden.</p>
           </div>
         </div>
@@ -365,12 +352,20 @@ footer nav a { color: var(--ink-soft); }
           <p class="panel-foot">Runs in your own Copilot. Nothing is sent to me.</p>
         </div>
 
+        <div class="step step-2" style="--c: var(--teal)">
+          <span class="step-n" aria-hidden="true">2</span>
+          <div>
+            <h3><span class="sr-only">Step 2: </span>Paste it into Copilot</h3>
+            <p>Open Microsoft 365 Copilot Chat or Cowork, paste the prompt and send it. Copilot reads the Ignite Book of News and the official Microsoft blogs it links to. With a Microsoft 365 Copilot license, it can also use your recent mail, meetings and documents. Without one, fill in the four lines under ABOUT ME.</p>
+          </div>
+        </div>
+
         <div class="step step-3" style="--c: var(--pink)">
           <span class="step-n" aria-hidden="true">3</span>
           <div>
-            <h3><span class="sr-only">Step 3: </span>Paste both into Copilot</h3>
-            <p>Open Microsoft 365 Copilot Chat or Cowork, attach the file, paste the prompt and send it. With a Microsoft 365 Copilot license, Copilot can also read your recent mail, meetings and documents. Without one, fill in the four lines under ABOUT ME.</p>
-            <p class="note">Has your admin turned off web search in Copilot? The file is enough.</p>
+            <h3><span class="sr-only">Step 3: </span>Check the sources</h3>
+            <p>Every item in the answer links to a Microsoft page. Statuses change, so click before you decide anything.</p>
+            <p class="note">No web search in your Copilot? It will tell you. Then browse <a href="#news">the {{ITEM_COUNT}} below</a> and paste the ones that look relevant into the chat.</p>
           </div>
         </div>
 
@@ -501,7 +496,7 @@ footer nav a { color: var(--ink-soft); }
       const ok = await copyText(code.textContent);
       label.textContent = ok ? 'Copied' : 'Select the text to copy';
       btn.classList.toggle('is-done', ok);
-      live.textContent = ok ? `${lang} prompt copied. Paste it into Copilot with the file attached.` : 'Copy did not work. Select the prompt text and copy it manually.';
+      live.textContent = ok ? `${lang} prompt copied. Paste it into Copilot Chat or Cowork.` : 'Copy did not work. Select the prompt text and copy it manually.';
       if (!ok) $('#prompt').scrollIntoView({ block: 'start' });
       setTimeout(() => { label.textContent = original; btn.classList.remove('is-done'); }, 2400);
     });

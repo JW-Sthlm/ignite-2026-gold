@@ -6,7 +6,7 @@
 
 The Book of News has almost 60 announcements. This file keeps the 28 that matter most to companies already running on Microsoft, in six groups. Each status is copied the way Microsoft worded it on 18 November 2026, and statuses change. There are no prices here on purpose. Check the linked source before you decide anything.
 
-To use it with Copilot: attach this file together with the prompt from https://jw-sthlm.github.io/ignite-2026-gold/
+This is the reading list behind https://jw-sthlm.github.io/ignite-2026-gold/. The prompt there sends Copilot to the Book of News and Microsoft's blogs directly.
 
 ## Status words
 
