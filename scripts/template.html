@@ -226,12 +226,31 @@ p { text-wrap: pretty; }
 
 /* CTA */
 .cta { position: relative; }
-.cta-inner { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 28px; padding: clamp(32px, 5vw, 64px); background: oklch(0.144 0.053 279.8 / 0.7); }
-.cta-inner > :not(.cta-art) { position: relative; z-index: var(--z-raised); }
+.cta-inner { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(32px, 5vw, 64px); align-items: center; border: 1px solid var(--line); border-radius: 28px; padding: clamp(32px, 5vw, 64px); background: oklch(0.144 0.053 279.8 / 0.7); }
 .cta h2 { max-width: 18ch; font-size: clamp(2rem, 1.3rem + 2.6vw, 3.25rem); line-height: 1.04; font-weight: 700; letter-spacing: -0.025em; }
-.cta p { margin: 18px 0 0; max-width: 46ch; color: var(--ink-soft); font-size: 1.1875rem; }
-.cta-art { position: absolute; right: 0; bottom: 0; width: min(500px, 46%); height: auto; overflow: visible; pointer-events: none; }
-@media (max-width: 720px) { .cta-art { display: none; } }
+.cta-copy p { margin: 18px 0 0; max-width: 46ch; color: var(--ink-soft); font-size: 1.1875rem; }
+.cta-contact { display: grid; gap: 26px; padding-left: clamp(32px, 4vw, 56px); border-left: 1px solid var(--line); }
+.cta-me { display: flex; align-items: center; gap: 18px; }
+.cta-me img { width: 104px; height: 104px; flex-shrink: 0; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px var(--deep), 0 0 0 5px var(--gold), 0 0 26px -4px var(--gold); }
+.cta-me p { margin: 0; display: grid; gap: 2px; line-height: 1.35; min-width: 0; }
+.cta-me strong { font-size: 1.1875rem; font-weight: 600; }
+.cta-me span { color: var(--ink-soft); font-size: 0.9375rem; }
+.cta-qr { display: flex; align-items: center; gap: 18px; text-decoration: none; }
+.cta-qr img { width: 164px; height: 164px; flex-shrink: 0; padding: 8px; background: #fff; border-radius: 16px; }
+.cta-qr > span { display: grid; gap: 6px; min-width: 0; }
+.cta-qr-label { color: var(--ink-soft); font-size: 0.9375rem; }
+.cta-qr-url { font: 600 0.875rem/1.3 var(--mono); color: var(--ink); overflow-wrap: anywhere; }
+.cta-qr:hover .cta-qr-url { text-decoration: underline; }
+@media (max-width: 1100px) {
+  .cta-inner { grid-template-columns: minmax(0, 1fr); }
+  .cta-contact { grid-template-columns: auto auto; justify-content: start; align-items: center; column-gap: 56px; padding-left: 0; border-left: 0; padding-top: 28px; border-top: 1px solid var(--line); }
+  .cta-qr { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+@media (max-width: 640px) { .cta-contact { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 520px) {
+  .cta-me img { width: 80px; height: 80px; }
+  .cta-qr img { width: 128px; height: 128px; }
+}
 
 /* Footer */
 footer { padding-block: 40px 56px; border-top: 1px solid var(--line); color: var(--ink-faint); font-size: 0.9375rem; }
@@ -379,7 +398,7 @@ footer nav a { color: var(--ink-soft); }
             <li>What to leave for now</li>
             <li>Three questions for your IT team, Microsoft or your partner</li>
           </ul>
-          <p class="after">Then Copilot offers to turn it into a one-page brief for your leadership team.</p>
+          <p class="after">If your Copilot can create files, as Cowork can, it also builds a deck of up to eight slides for your leadership team, in your company's PowerPoint template if it finds one. If it can't, it offers a one-page brief instead.</p>
         </div>
       </div>
     </div>
@@ -393,6 +412,28 @@ footer nav a { color: var(--ink-soft); }
       <div class="btn-row"><a class="btn ghost" href="#g3">See the modernization news</a></div>
     </div>
     <span class="lens-lane" aria-hidden="true"></span>
+  </section>
+
+  <section class="section cta" id="debrief" aria-labelledby="cta-title">
+    <div class="wrap">
+      <div class="cta-inner">
+        <div class="cta-copy">
+          <h2 id="cta-title">Want an Ignite debrief for your leadership team?</h2>
+          <p>Reach out and tell me what your team needs. Send me a message on LinkedIn, or scan the code for my link page.</p>
+          <div class="btn-row"><a class="btn" href="https://www.linkedin.com/in/johanwallquist/">Message me on LinkedIn</a></div>
+        </div>
+        <div class="cta-contact">
+          <div class="cta-me">
+            <img src="assets/johan-2026.jpg" width="240" height="240" alt="Johan Wallquist" loading="lazy" decoding="async">
+            <p><strong>Johan Wallquist</strong><span>Cloud &amp; AI Advisor, Microsoft</span></p>
+          </div>
+          <a class="cta-qr" href="https://bit.ly/m/johanwallquist">
+            <img src="assets/qr-link-page.svg" width="164" height="164" alt="QR code for Johan's link page" loading="lazy" decoding="async">
+            <span><span class="cta-qr-label">Scan for my link page</span><span class="cta-qr-url">bit.ly/m/johanwallquist</span></span>
+          </a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="section" id="news" aria-labelledby="news-title">
@@ -409,23 +450,6 @@ footer nav a { color: var(--ink-soft); }
       </div>
       <p class="legend"><span class="chip chip-ga">GA</span> means released. <span class="chip">Preview</span> means you can try it, but it may change. <span class="chip">Frontier</span> is Microsoft's early-access program for new Copilot features. A <span class="chip chip-soon">dashed</span> chip means announced with a date, but not here yet.</p>
 {{NEWS_GROUPS}}
-    </div>
-  </section>
-
-  <section class="section cta" aria-labelledby="cta-title">
-    <div class="wrap">
-      <div class="cta-inner">
-        <h2 id="cta-title">Want an Ignite debrief for your leadership team?</h2>
-        <p>I'll take your leaders through what's ready now and what it means for your systems. Send me a message on LinkedIn.</p>
-        <div class="btn-row"><a class="btn" href="https://www.linkedin.com/in/jwallquist/">Message me on LinkedIn</a></div>
-        <svg class="cta-art" viewBox="0 0 520 300" aria-hidden="true" focusable="false">
-          <path class="lane lane-glow" stroke="var(--orange)" d="M560 110H330A150 150 0 0 0 180 260V340"/>
-          <path class="lane lane-glow" stroke="var(--pink)" d="M560 140H330A120 120 0 0 0 210 260V340"/>
-          <path class="lane lane-thin" stroke="var(--orange)" d="M560 94H330A166 166 0 0 0 164 260V340"/>
-          <path class="lane lane-base" stroke="var(--orange)" d="M560 110H330A150 150 0 0 0 180 260V340"/>
-          <path class="lane lane-base" stroke="var(--pink)" d="M560 140H330A120 120 0 0 0 210 260V340"/>
-        </svg>
-      </div>
     </div>
   </section>
 </main>

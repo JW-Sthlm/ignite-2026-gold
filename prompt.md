@@ -51,7 +51,16 @@ GIVE ME
 5. Not yet: up to 5 items that are interesting but not for us right now, one line each.
 6. Three questions to take to our IT team, Microsoft or our partner.
 
-Answer in English. End with one line reminding me to check the details in the linked sources, then offer to turn this into a one-page brief for our leadership team.
+DECK (only if you can create files here, for example in Cowork)
+- When the answer is done, turn it into a PowerPoint deck for our leadership team: 16:9, 8 slides at most.
+- Slides: a title slide, one slide each for points 1, 2, 5 and 6, one slide per opportunity from point 4, and a closing slide with the sources.
+- Give every slide a headline that states its point. Keep the text short and put the detail in the speaker notes.
+- Use our official PowerPoint template or brand kit if you can find it in our files. Otherwise use a clean, neutral design. Don't search the web for our logo.
+- Show Microsoft as the source, small and subtle in grey (#737373): four squares in a 2x2 grid, drawn as shapes, next to "Based on Microsoft Ignite 2026" on the title slide and next to "Source: Microsoft Ignite 2026" and the links at the bottom of each slide. Keep Microsoft less prominent than our own brand.
+- Write product names the way Microsoft writes them, and apply the RULES above to the deck too.
+- If you can't create files here, skip this part and don't mention it.
+
+Answer in English. End with one line reminding me to check the details in the linked sources. If you made the deck, add a link to it. If not, offer to turn this into a one-page brief for our leadership team.
 ```
 
 ## Svenska
@@ -97,11 +106,20 @@ GE MIG
 5. Inte än: upp till 5 saker som är intressanta men inte för oss just nu, en rad var.
 6. Tre frågor att ta med till vår IT-avdelning, Microsoft eller vår partner.
 
-Svara på svenska. Avsluta med en rad om att jag ska kontrollera detaljerna i de länkade källorna, och erbjud dig sedan att göra om svaret till ett underlag på en sida för vår ledningsgrupp.
+PRESENTATION (bara om du kan skapa filer här, till exempel i Cowork)
+- När svaret är klart gör du om det till en PowerPoint-presentation för vår ledningsgrupp: 16:9, högst 8 bilder.
+- Bilder: en titelbild, en bild var för punkt 1, 2, 5 och 6, en bild per möjlighet från punkt 4 och en sista bild med källorna.
+- Ge varje bild en rubrik som säger vad poängen är. Håll texten kort och lägg detaljerna i talaranteckningarna.
+- Använd vår officiella PowerPoint-mall eller grafiska profil om du hittar den i våra filer. Annars en ren, neutral design. Sök inte efter vår logotyp på webben.
+- Visa Microsoft som källa, litet och diskret i grått (#737373): fyra kvadrater i ett 2x2-rutnät, ritade som former, bredvid "Baserat på Microsoft Ignite 2026" på titelbilden och bredvid "Källa: Microsoft Ignite 2026" och länkarna längst ner på varje bild. Microsoft ska synas mindre än vårt eget varumärke.
+- Skriv produktnamnen som Microsoft skriver dem, och låt reglerna under REGLER gälla även presentationen.
+- Om du inte kan skapa filer här, hoppa över den här delen och nämn den inte.
+
+Svara på svenska. Avsluta med en rad om att jag ska kontrollera detaljerna i de länkade källorna. Om du gjorde presentationen, lägg till en länk till den. Annars erbjuder du dig att göra om svaret till ett underlag på en sida för vår ledningsgrupp.
 ```
 
 ## Tips
 
 - Copilot needs web search to read the Book of News. It's on in most organizations. If yours is off, Copilot will say so. Then browse the 28 announcements on the page and paste the ones that look relevant into the chat.
-- In Cowork, accept the offer at the end and it writes the one-page brief as a Word document.
+- If your Copilot can create files, as Cowork can, it also builds a deck of up to eight slides for your leadership team, in your company's PowerPoint template if it finds one in your files. If it can't, it skips that part and offers a one-page brief instead.
 - No Copilot at work? The prompt also works in other AI assistants that can read web pages.

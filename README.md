@@ -22,7 +22,7 @@ Find the Ignite 2026 announcements that matter for your role and your company. O
 2. Open Microsoft 365 Copilot Chat or Cowork, paste the prompt and send it.
 3. Check the linked sources before you decide anything.
 
-Copilot needs web search to read the Book of News. With a Microsoft 365 Copilot license, it can also use your recent mail, meetings and documents. Without one, fill in the four lines under ABOUT ME. Everything runs in your own Copilot.
+Copilot needs web search to read the Book of News. With a Microsoft 365 Copilot license, it can also use your recent mail, meetings and documents. Without one, fill in the four lines under ABOUT ME. If your Copilot can create files, as Cowork can, it also builds a deck of up to eight slides for your leadership team. Everything runs in your own Copilot.
 
 ## Update it
 
@@ -36,7 +36,7 @@ The build stops if an item is missing its chips or audience, or if an em dash sn
 
 ## Credits
 
-By [Johan Wallquist](https://www.linkedin.com/in/jwallquist/), Cloud & AI Advisor at Microsoft. A personal project, not an official Microsoft resource. Statuses are as of 18 November 2026.
+By [Johan Wallquist](https://www.linkedin.com/in/johanwallquist/), Cloud & AI Advisor at Microsoft. A personal project, not an official Microsoft resource. Statuses are as of 18 November 2026.
 
 The partner edition from Build 2026 is at [jw-sthlm.github.io/build-2026-gold](https://jw-sthlm.github.io/build-2026-gold/).
 
